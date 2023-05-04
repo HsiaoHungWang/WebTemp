@@ -33,8 +33,8 @@
          //const data = await response.text();
          // result.innerHTML = `<h2>${data}</h2>`
 
-
-           const response = await fetch('@Url.Content("~/member/sayhi")');
+            //@Url.Content("~/member/sayhi")
+           const response = await fetch('@Url.Content("~/member/sayhi")?name=Mary&age=29');
             const data = await response.text();
             result.innerHTML = `<h2>${data}</h2>`
     })
