@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "AutoComplete";
+}
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <h1>AutoComplete</h1>
+        <input type="text" class="form-control mb-3" id="InputKeyword" placeholder="請輸入要搜尋的字元">
+        <div class="list-group">
+         
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+@section Scripts{
+    <script>
+        const inpKeyword = document.querySelector('#InputKeyword');
+        const divList = document.querySelector('.list-group');
+    
+        inpKeyword.addEventListener('input',async ()=>{
+            //const btn = `<button type="button" class="list-group-item list-group-item-action">${inpKeyword.value}</button>`;
+            //divList.innerHTML += btn;
+            const response =await fetch('@Url.Content("~/Home/GetProducts")?keyword=' + inpKeyword.value);
+            const datas = await response.json();
+
+            //讀出JSON格式的資料
+         const products =   datas.map(data=>{
+                return(
+                    `<button onclick="read(event)"  type="button" class="list-group-item list-group-item-action">${data}</button>`
+                )
+            })
+            divList.innerHTML = products.join("");
+        })
+
+        function read(evt){
+            inpKeyword.value = evt.target.textContent;
+            divList.innerHTML = "";
+        }
+
+    </script>
+}
+
+

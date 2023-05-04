@@ -7,10 +7,11 @@ namespace WebTemp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly NorthwindContext _context;
+        public HomeController(ILogger<HomeController> logger, NorthwindContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -21,6 +22,17 @@ namespace WebTemp.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult AutoComplete()
+        {
+            return View();
+        }
+
+        public IActionResult GetProducts(string keyword)
+        {
+          var products =  _context.Products.Where(p => p.ProductName.Contains(keyword)).Select(p => p.ProductName);
+            return Json(products);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
