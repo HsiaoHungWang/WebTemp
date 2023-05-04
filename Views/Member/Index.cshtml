@@ -15,18 +15,21 @@
         const btn = document.querySelector('#button1');
         const result = document.querySelector('#div1');
     //步驟二在什麼時後 => 事件   click 
-    btn.addEventListener('click',()=>{
+        btn.addEventListener('click', async  () => {
     //步驟三做甚麼事
    // result.innerHTML = `<h2>Hello JavaScript!!</h2>`
 
-  //Ajax call server 程式
-            fetch('/Member/sayhi')
-            .then(response=>response.text())
-            .then(data=>{
-             result.innerHTML = `<h2>${data}</h2>`
-            });
-        
+  //Ajax call server 程式 promise 非同步
+            //fetch('/Member/sayhi')
+            //.then(response=>response.text())
+            //.then(data=>{
+            // result.innerHTML = `<h2>${data}</h2>`
+            //});
 
+            //改成 async await 寫法
+         const response =   await fetch('/Member/sayhi');
+         const data = await response.text();
+          result.innerHTML = `<h2>${data}</h2>`
     })
    
     //fetch('server端程式的路徑')

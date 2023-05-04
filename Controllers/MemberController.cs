@@ -14,7 +14,7 @@ namespace WebTemp.Controllers
 
         public IActionResult SayHi()
         {
-            return Content("Hello Ajax!!", "text/plain", Encoding.UTF8);
+            return Content("Hello Async Await!!", "text/plain", Encoding.UTF8);
         }
 
         
