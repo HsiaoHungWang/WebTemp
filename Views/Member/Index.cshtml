@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
+<img src="~/images/logo.png" />
 <h1>First Ajax 練習</h1>
 <hr />
 <!--按下按鈕去呼叫Serve端程式-->
@@ -27,9 +28,15 @@
             //});
 
             //改成 async await 寫法
-         const response =   await fetch('/Member/sayhi');
-         const data = await response.text();
-          result.innerHTML = `<h2>${data}</h2>`
+            
+         //const response =   await fetch(/Member/sayhi');  //部署到伺服器上時，這樣的路徑有可能會發生404的錯誤
+         //const data = await response.text();
+         // result.innerHTML = `<h2>${data}</h2>`
+
+
+           const response = await fetch('@Url.Content("~/member/sayhi")');
+            const data = await response.text();
+            result.innerHTML = `<h2>${data}</h2>`
     })
    
     //fetch('server端程式的路徑')
