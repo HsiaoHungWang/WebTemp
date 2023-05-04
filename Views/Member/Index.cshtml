@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>First Ajax 練習</h1>
+<hr />
+<!--按下按鈕去呼叫Serve端程式-->
+<input type="button" value="Click" id="button1" />
+<div id="div1"></div>
+
+@section Scripts{
+<script>
+    //步驟一找到要控制的對象
+        const btn = document.querySelector('#button1');
+        const result = document.querySelector('#div1');
+    //步驟二在什麼時後 => 事件   click 
+    btn.addEventListener('click',()=>{
+ //步驟三做甚麼事
+    result.innerHTML = `<h2>Hello JavaScript!!</h2>`
+    })
+   
+</script>
+
+}
+

@@ -8,8 +8,13 @@ namespace WebTemp.Controllers
     {
         public IActionResult Index()
         {
-            //html => 顯示 + 資料
-            return Content("會員首頁", "text/plain", Encoding.UTF8);
+            return View();
+         
+        }
+
+        public IActionResult SayHi()
+        {
+            return Content("Hello Ajax!!", "text/plain", Encoding.UTF8);
         }
 
         
